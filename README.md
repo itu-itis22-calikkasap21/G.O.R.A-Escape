@@ -1,25 +1,60 @@
 # G.O.R.A Maze Game
 
-This project is a game simulating a player navigating through a series of maze levels. The main components and functions are as follows:
+# G.O.R.A Maze Game
 
-clear: This function clears the screen each time the game redraws. It uses the 'system' function from the 'os' module and runs the 'cls' command on Windows.
+This project is a text-based maze game where the player (`P`) has to navigate through a maze, collect points (`@`), and reach the exit (`E`) within a certain time limit. If the player hits a wall (`#`), they lose points and are returned to their original position. The game consists of multiple levels and a leaderboard, which displays the top scores.
 
-Player class: This class represents the state of the player. It stores the player's x, y position and total score. It has a 'move' function that allows the player to move.
+## Key Features
 
-Level class: This class represents each maze level. It stores a maze map, and start and end points.
+1. **Maze Generation**: Random mazes are generated for each level using a depth-first search algorithm.
 
-get_username: This function takes the name of the user, who is the person playing the game.
+2. **Player Movement**: The player can move up, down, left, and right within the maze using the `w`, `s`, `a`, and `d` keys, respectively.
 
-save_score: This function saves a player's score to a 'scores.json' file. It uses the 'json' module.
+3. **Scoring System**: Players receive points for collecting items within the maze. Hitting a wall results in a penalty.
 
-print_leaderboard: This function reads the 'scores.json' file and sorts the players by score, with those with the highest scores at the top.
+4. **Multi-Level Gameplay**: The game consists of multiple levels, each with a unique maze and a 60-second time limit.
 
-generate_maze: This function generates a maze. It uses a walk algorithm to create the maze, and then returns a text representation of the maze.
+5. **Leaderboard**: The leaderboard keeps track of the scores for each player. The score is cumulative over the levels and is saved to a JSON file.
 
-generate_levels: This function generates a certain number of maze levels. For each one, it generates a maze and finds the start and end points.
+## Code Structure
 
-find_start_and_end: This function finds the start and end points of a maze.
+### Libraries
 
-main: This function runs the main loop of the game. It gets the player's name, generates the maze levels, and for each one, simulates the player trying to exit the maze. It takes the player's moves as input and tries to move them in the maze. When the player reaches the exit or time runs out, it saves the player's score and prints the leaderboard.
+The game uses standard Python libraries such as `time`, `random`, `json`, and `os`.
 
-The game takes as input from the user which direction they want to move to exit the maze. The player can use the 'w' (up), 'a' (left), 's' (down), and 'd' (right) keys to try to navigate out of the maze and collect as many points as possible. They have a total of 60 seconds per level. The player receives points for completing each level, and the points are ultimately saved to a file called 'scores.json'. This file is used to create a leaderboard.
+### Player Class
+
+The `Player` class represents the player within the maze. The player has a position (x, y) and a score. The `move` method allows the player to move in a specified direction.
+
+### Level Class
+
+The `Level` class represents a level within the game. Each level has a maze, start point, and end point.
+
+### Functions
+
+The game includes several functions to manage the game process:
+
+- `clear`: Clears the terminal screen.
+- `get_username`: Asks the user for their username and displays the game instructions.
+- `save_score`: Saves the player's score to a JSON file.
+- `print_leaderboard`: Prints the leaderboard, reading the scores from the JSON file.
+- `generate_maze`: Generates a random maze.
+- `generate_levels`: Generates multiple random levels.
+- `find_start_and_end`: Finds the start and end points of a maze.
+- `main`: Contains the main game loop.
+
+### Running the Game
+
+To run the game, call the `main` function. The function will generate the levels, create a player, and manage the gameplay and scoring.
+
+## How to Play
+
+When you start the game, you are asked to enter your username. Once you've entered your username, you can start playing the game. Use the `w`, `s`, `a`, and `d` keys to move the player up, down, left, and right, respectively. Try to collect as many points as possible and reach the exit within the time limit to maximize your score. Be careful not to hit the walls, as you will lose points and return to your starting position. Good luck!
+
+## Future Enhancements
+
+While this game is fully functional, there are a few potential enhancements that could make it even better:
+
+- Adding more varied maze generation algorithms.
+- Including different types of obstacles or power-ups within the maze.
+- Implementing an improved leaderboard that includes dates and times of the scores.
