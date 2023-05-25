@@ -1,4 +1,4 @@
-# G.O.R.A-Escape
+# G.O.R.A Maze Game
 
 This project is a game simulating a player navigating through a series of maze levels. The main components and functions are as follows:
 
